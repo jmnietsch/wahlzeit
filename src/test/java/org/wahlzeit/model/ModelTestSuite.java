@@ -3,6 +3,7 @@ package org.wahlzeit.model;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.wahlzeit.model.MusicalLocation.MusicalLocationTestSuite;
 import org.wahlzeit.model.persistence.PersistenceTestSuite;
 
 @RunWith(Suite.class)
@@ -16,7 +17,9 @@ import org.wahlzeit.model.persistence.PersistenceTestSuite;
 		PhotoFilterTest.class,
 		TagsTest.class,
 		UserStatusTest.class,
-		ValueTest.class
+		ValueTest.class,
+
+		MusicalLocationTestSuite.class
 })
 
 

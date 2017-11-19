@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.MusicalLocation;
 
 public class MusicalLocation {
 	private String fLocationName;
@@ -19,4 +19,5 @@ public class MusicalLocation {
 	public void setfLocationName(String name) {
 		this.fLocationName = fLocationName;
 	}
+
 }
