@@ -18,6 +18,8 @@ import org.wahlzeit.model.persistence.PersistenceTestSuite;
 		TagsTest.class,
 		UserStatusTest.class,
 		ValueTest.class,
+		CoordinateTest.class,
+		CartesianCoordinateTest.class,
 
 		MusicalLocationTestSuite.class
 })

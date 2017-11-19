@@ -104,9 +104,9 @@ public class SphericalCoordinate implements Coordinate{
 
 	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
-		double x = radius * Math.cos(longitude) * Math.sin(latitude);
+		double x = radius * Math.cos(latitude);
 		double y = radius * Math.sin(longitude) * Math.sin(latitude);
-		double z = radius * Math.cos(latitude);
+		double z = radius * Math.cos(longitude) * Math.sin(latitude);
 
 		return new CartesianCoordinate(x, y, z);
 	}
@@ -139,7 +139,7 @@ public class SphericalCoordinate implements Coordinate{
 
 		double tempB = 2 * Math.atan2(tempA, 1-tempA);
 
-		return tempB * EARTHRADIUS;
+		return tempB * radius; //Todo solution with two radii
 	}
 
 }

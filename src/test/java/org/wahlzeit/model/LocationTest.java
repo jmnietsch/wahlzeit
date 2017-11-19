@@ -27,7 +27,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LocationTest {
-	protected Coordinate coordinate;
+	protected CartesianCoordinate coordinate;
 	protected Location l0;
 	protected Location l2;
 	protected Location l1;
@@ -37,17 +37,17 @@ public class LocationTest {
 	@Before
 	public void setup(){
 		//init some testvars
-		coordinate = new Coordinate(0.0, 2.0, 0.0);
-		l0 = new Location(new Coordinate(0, 0, 0));
-		l1 = new Location(new Coordinate(0, 0, 2));
+		coordinate = new CartesianCoordinate(0.0, 2.0, 0.0);
+		l0 = new Location(new CartesianCoordinate(0, 0, 0));
+		l1 = new Location(new CartesianCoordinate(0, 0, 2));
 		l2 = new Location(coordinate);
 
 	}
 
 	@Test
 	public void testIsEqual(){
-		assertTrue(l0.isEqual(new Location(new Coordinate(0,0,0))));
-		assertTrue(l1.isEqual(new Location(new Coordinate(0, 0, 2))));
+		assertTrue(l0.isEqual(new Location(new CartesianCoordinate(0,0,0))));
+		assertTrue(l1.isEqual(new Location(new CartesianCoordinate(0, 0, 2))));
 
 		assertTrue(l2.isEqual(l2));
 		assertFalse(l1.isEqual(l2));
@@ -57,8 +57,8 @@ public class LocationTest {
 
 	@Test
 	public void testEquals(){
-		assertTrue(l0.equals(new Location(new Coordinate(0,0,0))));
-		assertTrue(l1.equals(new Location(new Coordinate(0, 0, 2))));
+		assertTrue(l0.equals(new Location(new CartesianCoordinate(0,0,0))));
+		assertTrue(l1.equals(new Location(new CartesianCoordinate(0, 0, 2))));
 
 		assertTrue(l2.equals(l2));
 		assertFalse(l1.equals(l2));
