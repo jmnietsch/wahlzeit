@@ -21,7 +21,7 @@
 package org.wahlzeit.model;
 
 
-public class SphericalCoordinate implements Coordinate{
+public class SphericalCoordinate extends AbstractCoordinate{
 	private double latitude;
     private double longitude;
     private double radius;
@@ -45,75 +45,12 @@ public class SphericalCoordinate implements Coordinate{
     }
 
 	@Override
-	public boolean equals(Object o) {
-		if(o instanceof SphericalCoordinate){
-    	    return isEqual((SphericalCoordinate)o);
-		}
-
-		return false;
-	}
-
-	@Override
-	public boolean isEqual(Coordinate c) {
-		if (c==null){
-			return false;
-		}
-
-		SphericalCoordinate sphericalCoordinate = c.asSphericalCoordinate();
-
-		return ( this.latitude == sphericalCoordinate.latitude
-				&& this.longitude == sphericalCoordinate.longitude
-				&& this.radius == sphericalCoordinate.radius)
-				|| getDistance(sphericalCoordinate) <= DELTA;
-	}
-
-
-	@Override
-	public double getDistance(Coordinate c){
-		return getSphericalDistance(c);
-	}
-
-	@Override
-	public double getDistance(){
-		return getDistance(new SphericalCoordinate());
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public double getRadius() {
-		return radius;
-	}
-
-	public void setRadius(double radius) {
-		this.radius = radius;
-	}
-
-	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
 		double x = radius * Math.cos(latitude);
 		double y = radius * Math.sin(longitude) * Math.sin(latitude);
 		double z = radius * Math.cos(longitude) * Math.sin(latitude);
 
 		return new CartesianCoordinate(x, y, z);
-	}
-
-	@Override
-	public double getCartesianDistance(Coordinate coordinate) {
-		return this.asCartesianCoordinate().getCartesianDistance(coordinate);
 	}
 
 	@Override
@@ -142,4 +79,27 @@ public class SphericalCoordinate implements Coordinate{
 		return tempB * radius; //Todo solution with two radii
 	}
 
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
 }

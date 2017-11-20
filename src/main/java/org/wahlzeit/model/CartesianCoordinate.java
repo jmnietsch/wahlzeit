@@ -20,12 +20,10 @@
 
 package org.wahlzeit.model;
 
-public class CartesianCoordinate implements Coordinate{
+public class CartesianCoordinate extends AbstractCoordinate{
     private double x;
     private double y;
     private double z;
-
-    public final double DELTA = 1E-4;
 
     public CartesianCoordinate(double x, double y, double z) {
         this.x = x;
@@ -38,59 +36,16 @@ public class CartesianCoordinate implements Coordinate{
     }
 
 	@Override
-	public boolean equals(Object o) {
-		if(o instanceof CartesianCoordinate){
-    	    return isEqual((CartesianCoordinate)o);
-		}
-
-		return false;
-	}
-
-	@Override
-	public boolean isEqual(Coordinate c) {
-		if (c==null){
-			return false;
-		}
-
-		CartesianCoordinate cartesianCoordinate = c.asCartesianCoordinate();
-		return (this.x == cartesianCoordinate.x
-				&& this.y == cartesianCoordinate.y
-				&& this.z == cartesianCoordinate.z)
-				|| getDistance(cartesianCoordinate) <= DELTA;
-	}
-
-
-	public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getZ() {
-        return z;
-    }
-
-    public void setZ(double z) {
-        this.z = z;
-    }
-
-	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
 		return this;
 	}
 
 	@Override
 	public double getCartesianDistance(Coordinate coordinate) {
+    	if(coordinate == null){
+    		coordinate = new CartesianCoordinate();
+	    }
+
 		CartesianCoordinate c = coordinate.asCartesianCoordinate();
 
 		double dx = this.x - c.x;
@@ -102,25 +57,35 @@ public class CartesianCoordinate implements Coordinate{
 
 	@Override
 	public SphericalCoordinate asSphericalCoordinate() {
-    	double latitude  = Math.atan(y / x);
+    	//Todo sanity check
+		double latitude  = Math.atan(y / x);
     	double longitude = Math.atan(Math.sqrt(x * x + y * y) / z);
     	double radius = Math.sqrt(x * x + y * y + z * z);
 
 		return new SphericalCoordinate(latitude, longitude, radius);
 	}
 
-	@Override
-	public double getSphericalDistance(Coordinate coordinate) {
-		return this.asSphericalCoordinate().getSphericalDistance(coordinate);
+	public double getX() {
+		return x;
 	}
 
-	@Override
-	public double getDistance(Coordinate coordinate) {
-		return getCartesianDistance(coordinate);
+	public void setX(double x) {
+		this.x = x;
 	}
 
-	@Override
-	public double getDistance() {
-		return getDistance(new CartesianCoordinate());
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	public double getZ() {
+		return z;
+	}
+
+	public void setZ(double z) {
+		this.z = z;
 	}
 }

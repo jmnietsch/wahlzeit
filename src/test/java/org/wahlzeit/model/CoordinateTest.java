@@ -27,9 +27,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class CoordinateTest {
-	protected Coordinate coordinate;
-	protected CartesianCoordinate cartesianCoordinate;
-	protected SphericalCoordinate sphericalCoordinate;
+	private Coordinate coordinate;
+	private CartesianCoordinate cartesianCoordinate;
+	private CartesianCoordinate cartesianCoordinate1;
+	private CartesianCoordinate cartesianCoordinate2;
+	private SphericalCoordinate sphericalCoordinate;
+	private SphericalCoordinate sphericalCoordinate1;
+	private SphericalCoordinate sphericalCoordinate2;
 
 	public final double DELTA = 1E-4;
 
@@ -37,14 +41,23 @@ public class CoordinateTest {
 	public void setup(){
 		//init some testvars
 		cartesianCoordinate = new CartesianCoordinate(2.0, 1.0, 0.0);
+		cartesianCoordinate1 = new CartesianCoordinate(0, 3.0, 2.0);
+		cartesianCoordinate2 = new CartesianCoordinate(5.0, 0.0, 5.0);
 		coordinate = cartesianCoordinate;
+
 		sphericalCoordinate = cartesianCoordinate.asSphericalCoordinate();
+		sphericalCoordinate1 = cartesianCoordinate1.asSphericalCoordinate();
+		sphericalCoordinate2 = cartesianCoordinate2.asSphericalCoordinate();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		cartesianCoordinate = null;
+		cartesianCoordinate1 = null;
+		cartesianCoordinate2 = null;
 		sphericalCoordinate = null;
+		sphericalCoordinate1 = null;
+		sphericalCoordinate2 = null;
 		coordinate = null;
 	}
 
@@ -56,7 +69,7 @@ public class CoordinateTest {
 
 	@Test
 	public void testGetCartesianDistance() throws Exception {
-		assertTrue(new CartesianCoordinate().getDistance() <= DELTA);
+		assertTrue(new CartesianCoordinate().getDistanceToOrigin() <= DELTA);
 		assertTrue(cartesianCoordinate.getCartesianDistance(new CartesianCoordinate(2,1,0)) <= DELTA);
 	}
 
@@ -64,11 +77,17 @@ public class CoordinateTest {
 	public void testAsSphericalCoordinate() throws Exception {
 		SphericalCoordinate sphericalCoord = cartesianCoordinate.asSphericalCoordinate();
 		assertTrue(sphericalCoord.isEqual(sphericalCoordinate));
+
+		SphericalCoordinate sphericalCoord1 = cartesianCoordinate1.asSphericalCoordinate();
+		assertTrue(sphericalCoord1.isEqual(sphericalCoordinate1));
+
+		SphericalCoordinate sphericalCoord2 = cartesianCoordinate2.asSphericalCoordinate();
+		assertTrue(sphericalCoord2.isEqual(sphericalCoordinate2));
 	}
 
 	@Test
 	public void testGetSphericalDistance() throws Exception {
-		assertTrue(new SphericalCoordinate().getDistance() <= DELTA);
+		assertTrue(new SphericalCoordinate().getDistanceToOrigin() <= DELTA);
 
 		assertTrue(sphericalCoordinate.getSphericalDistance(new SphericalCoordinate(0.463,1.571,2.236)) <= DELTA);
 	}

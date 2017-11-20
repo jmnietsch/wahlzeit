@@ -61,13 +61,13 @@ public class CartesianCoordinateTest {
 
 	@Test
 	public void testGetDistance(){
-		assertEquals(0.0, c0.getDistance(), DELTA);
+		assertEquals(0.0, c0.getDistanceToOrigin(), DELTA);
 
 		assertEquals(Math.sqrt(2*2+4+4), c1.getDistance(c2), DELTA);
 
 		assertEquals(0.0, c1.getDistance(c1), DELTA);
 
-		assertEquals(1.0, c3.getDistance(), DELTA);
+		assertEquals(1.0, c3.getDistanceToOrigin(), DELTA);
 	}
 
 
