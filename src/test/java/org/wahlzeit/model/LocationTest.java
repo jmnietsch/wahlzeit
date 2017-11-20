@@ -20,6 +20,7 @@
 
 package org.wahlzeit.model;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LocationTest {
-	protected CartesianCoordinate coordinate;
+	protected Coordinate coordinate;
 	protected Location l0;
 	protected Location l2;
 	protected Location l1;
@@ -42,6 +43,14 @@ public class LocationTest {
 		l1 = new Location(new CartesianCoordinate(0, 0, 2));
 		l2 = new Location(coordinate);
 
+	}
+
+	@After
+	public void tearDown(){
+		coordinate = null;
+		l0 = null;
+		l1 = null;
+		l2 = null;
 	}
 
 	@Test
