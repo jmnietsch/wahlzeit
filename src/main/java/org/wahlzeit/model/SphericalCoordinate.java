@@ -37,7 +37,9 @@ public class SphericalCoordinate extends AbstractCoordinate{
 	public SphericalCoordinate(double latitude, double longitude, double radius) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.radius = radius;
+        this.radius = Math.abs(radius);
+
+		assertClassInvariants();
     }
 
     public SphericalCoordinate() {
@@ -46,10 +48,15 @@ public class SphericalCoordinate extends AbstractCoordinate{
 
 	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
+		assertClassInvariants();
+
 		double x = radius * Math.cos(latitude);
 		double y = radius * Math.sin(longitude) * Math.sin(latitude);
 		double z = radius * Math.cos(longitude) * Math.sin(latitude);
 
+		//Could check x, y and z. However the Cartesian Ctor will do this with its ClassInvariants
+
+		assertClassInvariants();
 		return new CartesianCoordinate(x, y, z);
 	}
 
@@ -65,6 +72,9 @@ public class SphericalCoordinate extends AbstractCoordinate{
 	 */
 	@Override
 	public double getSphericalDistance(Coordinate coordinate) {
+		assertClassInvariants();
+		assertIsNotNull(coordinate);
+
 		SphericalCoordinate sphericalCoordinate = coordinate.asSphericalCoordinate();
 
 		double deltaLatitude = sphericalCoordinate.latitude - this.latitude;
@@ -76,30 +86,96 @@ public class SphericalCoordinate extends AbstractCoordinate{
 
 		double tempB = 2 * Math.atan2(tempA, 1-tempA);
 
+		//Check validity of tempB. If tempA is NaN, tempB will to. However tempA as infinity will not cause invalidity.
+		assertIsValidValue(tempB);
+
+		assertClassInvariants();
 		return tempB * radius; //Todo solution with two radii
 	}
 
+
+
+	/**
+	 * @methodtype getter
+	 * @return Value of latitude
+	 */
 	public double getLatitude() {
 		return latitude;
 	}
 
+	/**
+	 * Setter method for latitude
+	 * No Parameter-Space is specified so far. All numerical Values are considered valid.
+	 * @methodtype setter
+	 * @param latitude new Value of latitude
+	 */
 	public void setLatitude(double latitude) {
+		assertClassInvariants();
+		assertIsValidValue(latitude);
+
 		this.latitude = latitude;
+
+		assertIsValidValue(this.latitude);
+		assertClassInvariants();
 	}
 
+	/**
+	 * @methodtype getter
+	 * @return Value of longitude
+	 */
 	public double getLongitude() {
 		return longitude;
 	}
 
+	/**
+	 * Setter method for longitude.
+	 * No Parameter-Space is specified so far. All numerical Values are considered valid.
+	 * @methodtype setter
+	 * @param longitude new Value of longitude
+	 */
 	public void setLongitude(double longitude) {
+		assertClassInvariants();
+		assertIsValidValue(longitude);
+
 		this.longitude = longitude;
+
+		assertIsValidValue(this.longitude);
+		assertClassInvariants();
 	}
 
+	/**
+	 * @methodtype getter
+	 * @return Value of radius
+	 */
 	public double getRadius() {
 		return radius;
 	}
 
+	/**
+	 * Setter method for radius.
+	 * @methodtype setter
+	 * @param radius new Value of radius
+	 */
 	public void setRadius(double radius) {
-		this.radius = radius;
+		assertClassInvariants();
+		assertIsValidValue(radius);
+
+		this.radius = Math.abs(radius);
+
+		assertIsValidValue(this.radius);
+		assertClassInvariants();
+	}
+
+	/**
+	 * Tests all Class-Variables for valid states
+	 * @methodtype assertion
+	 */
+	protected void assertClassInvariants() {
+		assertIsValidValue(this.latitude);
+		assertIsValidValue(this.longitude);
+		assertIsValidValue(this.radius);
+
+		//If a certain parameter-space is desired, it could be checked here.
+		assert this.radius >= 0;
 	}
 }
