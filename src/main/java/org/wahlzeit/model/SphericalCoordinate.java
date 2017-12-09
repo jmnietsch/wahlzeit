@@ -21,6 +21,8 @@
 package org.wahlzeit.model;
 
 
+import com.google.common.base.Preconditions;
+
 public class SphericalCoordinate extends AbstractCoordinate{
 	private double latitude;
     private double longitude;
@@ -73,7 +75,7 @@ public class SphericalCoordinate extends AbstractCoordinate{
 	@Override
 	public double getSphericalDistance(Coordinate coordinate) {
 		assertClassInvariants();
-		assertIsNotNull(coordinate);
+		Preconditions.checkNotNull(coordinate);
 
 		SphericalCoordinate sphericalCoordinate = coordinate.asSphericalCoordinate();
 
@@ -166,16 +168,44 @@ public class SphericalCoordinate extends AbstractCoordinate{
 		assertClassInvariants();
 	}
 
-	/**
-	 * Tests all Class-Variables for valid states
-	 * @methodtype assertion
-	 */
 	protected void assertClassInvariants() {
-		assertIsValidValue(this.latitude);
-		assertIsValidValue(this.longitude);
-		assertIsValidValue(this.radius);
+		try{
+			assertLatitudeIsValid(this.latitude);
+			assertLongitudeIsValid(this.longitude);
+			assertRadiusIsValid(this.radius);
+		}catch (IllegalArgumentException ex){
+			//Convert the illegal Argument into an Illegal State, since Invariants represent the state.
+			throw new IllegalStateException(ex);
+		}
+	}
 
-		//If a certain parameter-space is desired, it could be checked here.
-		assert this.radius >= 0;
+	/**
+	 * @methodtype assertion
+	 * @param radius The radius to evaluate to be valid
+	 */
+	private void assertRadiusIsValid(double radius) {
+		assertIsValidValue(radius);
+
+		if (radius < 0){
+			throw new IllegalArgumentException("Radius may not be negative.");
+		}
+	}
+
+	/**
+	 * @methodtype assertion
+	 * @param longitude The longitude to evaluate to be valid
+	 */
+	private void assertLongitudeIsValid(double longitude) {
+		assertIsValidValue(longitude);
+		//Todo add some parameter-space constraint
+	}
+
+	/**
+	 * @methodtype assertion
+	 * @param latitude The latitude to evaluate to be valid
+	 */
+	private void assertLatitudeIsValid(double latitude) {
+		assertIsValidValue(latitude);
+		//Todo add some parameter-space constraint
 	}
 }

@@ -1,5 +1,6 @@
 package org.wahlzeit.model.MusicalLocation;
 
+import com.google.common.base.Preconditions;
 import com.googlecode.objectify.annotation.Subclass;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
@@ -21,10 +22,10 @@ public class MusicalLocationPhoto extends Photo {
 	 * @methodtype constructor
 	 */
 	public MusicalLocationPhoto(MusicalLocation musicalLocation) {
-		super();
-		//this(PhotoId.getNextId(), musicalLocation);
 		fMusicalLocation = musicalLocation;
+		assertClassInvariants();
 	}
+
 
 	/**
 	 * @methodtype constructor
@@ -39,13 +40,29 @@ public class MusicalLocationPhoto extends Photo {
 	public MusicalLocationPhoto(PhotoId customId, MusicalLocation musicalLocation) {
 		super(customId);
 		fMusicalLocation = musicalLocation;
+
+		assertClassInvariants();
 	}
 
-	public MusicalLocation getfMusicalLocation() {
+	public MusicalLocation getMusicalLocation() {
 		return fMusicalLocation;
 	}
 
-	public void setMusicalLocation(MusicalLocation fMusicalLocation) {
-		this.fMusicalLocation = fMusicalLocation;
+	public void setMusicalLocation(MusicalLocation musicalLocation) {
+		assertClassInvariants();
+		Preconditions.checkNotNull(musicalLocation);
+		this.fMusicalLocation = musicalLocation;
+
+		assertClassInvariants();
+	}
+
+	private void assertClassInvariants() {
+		if(fMusicalLocation == null){
+			throw new IllegalStateException("A MusicalLocation in " + this + " must not be null");
+		}
+
+		if(id == null){
+			throw new IllegalStateException("The PhotoID in " + this + " must not be null");
+		}
 	}
 }

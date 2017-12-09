@@ -42,5 +42,9 @@ public interface Coordinate {
 	 */
 	boolean isEqual(Coordinate coordinate);
 
+	/**
+	 * @methodproperty convenience
+	 * @return Distance to CartesianCoordinate(0,0,0)
+	 */
 	double getDistanceToOrigin();
 }

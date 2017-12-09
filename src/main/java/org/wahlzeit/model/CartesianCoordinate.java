@@ -20,6 +20,8 @@
 
 package org.wahlzeit.model;
 
+import com.google.common.base.Preconditions;
+
 public class CartesianCoordinate extends AbstractCoordinate{
     private double x;
     private double y;
@@ -45,7 +47,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	@Override
 	public double getCartesianDistance(Coordinate coordinate) {
 		assertClassInvariants();
-    	assertIsNotNull(coordinate);
+		Preconditions.checkNotNull(coordinate);
 
 		CartesianCoordinate c = coordinate.asCartesianCoordinate();
 
@@ -145,8 +147,23 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	 * @methodtype assertion
 	 */
 	protected void assertClassInvariants() {
-		assertIsValidValue(this.x);
-		assertIsValidValue(this.y);
-		assertIsValidValue(this.z);
+		try{
+			assertXisValid(this.x);
+			assertYisValid(this.y);
+			assertZisValid(this.z);
+		} catch (IllegalArgumentException ex){
+			//Convert the illegal Argument into an Illegal State, since Invariants represent the state.
+			throw new IllegalStateException(ex);
+		}
+	}
+
+	private void assertXisValid(double x) {
+		assertIsValidValue(x);
+	}
+	private void assertYisValid(double y) {
+		assertIsValidValue(y);
+	}
+	private void assertZisValid(double z) {
+		assertIsValidValue(z);
 	}
 }

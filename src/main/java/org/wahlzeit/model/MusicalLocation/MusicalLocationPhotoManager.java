@@ -13,7 +13,7 @@ public class MusicalLocationPhotoManager extends PhotoManager {
 
 
 	private MusicalLocationPhotoManager() {
-		super();
+
 	}
 
 	public static MusicalLocationPhotoManager getInstance() {
