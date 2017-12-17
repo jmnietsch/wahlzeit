@@ -18,7 +18,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package org.wahlzeit.model;
+package org.wahlzeit.model.Coordinates;
 
 import org.junit.After;
 import org.junit.Before;
@@ -40,9 +40,9 @@ public class CoordinateTest {
 	@Before
 	public void setup(){
 		//init some testvars
-		cartesianCoordinate = new CartesianCoordinate(2.0, 1.0, 0.0);
-		cartesianCoordinate1 = new CartesianCoordinate(0, 3.0, 2.0);
-		cartesianCoordinate2 = new CartesianCoordinate(5.0, 0.0, 5.0);
+		cartesianCoordinate = CartesianCoordinate.getCartesianCoordinate(2.0, 1.0, 0.0);
+		cartesianCoordinate1 = CartesianCoordinate.getCartesianCoordinate(0, 3.0, 2.0);
+		cartesianCoordinate2 = CartesianCoordinate.getCartesianCoordinate(5.0, 0.0, 5.0);
 		coordinate = cartesianCoordinate;
 
 		sphericalCoordinate = cartesianCoordinate.asSphericalCoordinate();
@@ -69,8 +69,8 @@ public class CoordinateTest {
 
 	@Test
 	public void testGetCartesianDistance() throws Exception {
-		assertTrue(new CartesianCoordinate().getDistanceToOrigin() <= DELTA);
-		assertTrue(cartesianCoordinate.getCartesianDistance(new CartesianCoordinate(2,1,0)) <= DELTA);
+		assertTrue(CartesianCoordinate.getCartesianCoordinate().getDistanceToOrigin() <= DELTA);
+		assertTrue(cartesianCoordinate.getCartesianDistance(CartesianCoordinate.getCartesianCoordinate(2,1,0)) <= DELTA);
 	}
 
 	@Test
@@ -87,8 +87,8 @@ public class CoordinateTest {
 
 	@Test
 	public void testGetSphericalDistance() throws Exception {
-		assertTrue(new SphericalCoordinate().getDistanceToOrigin() <= DELTA);
+		assertTrue(SphericalCoordinate.getSphericalCoordinate().getDistanceToOrigin() <= DELTA);
 
-		assertTrue(sphericalCoordinate.getSphericalDistance(new SphericalCoordinate(0.463,1.571,2.236)) <= DELTA);
+		assertTrue(sphericalCoordinate.getSphericalDistance(SphericalCoordinate.getSphericalCoordinate(0.463,1.571,2.236)) <= DELTA);
 	}
 }

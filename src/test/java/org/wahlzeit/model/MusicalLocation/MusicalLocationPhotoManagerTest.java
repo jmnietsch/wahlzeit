@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
+import org.wahlzeit.model.PhotoManager;
 
 import java.io.IOException;
 
@@ -30,7 +31,7 @@ public class MusicalLocationPhotoManagerTest {
 
 	@Test
 	public void testAddPhoto() throws IOException {
-		MusicalLocationPhotoManager instance = MusicalLocationPhotoManager.getInstance();
+		PhotoManager instance = PhotoManager.getInstance();
 
 		assertTrue(photo != null);
 		assertTrue(instance != null);

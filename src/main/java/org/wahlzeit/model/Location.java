@@ -20,6 +20,8 @@
 
 package org.wahlzeit.model;
 
+import org.wahlzeit.model.Coordinates.Coordinate;
+
 public class Location {
     public Coordinate coordinate;
 

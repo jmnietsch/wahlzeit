@@ -1,28 +1,28 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.Coordinates;
 
-public interface Coordinate {
+public interface Coordinate{
 
 	/**
-	 * Convert this Coordinate to a Cartesian one
-	 * @return Interpret this Coordinate as a Cartesian Coordinate.
+	 * Convert this Coordinates to a Cartesian one
+	 * @return Interpret this Coordinates as a Cartesian Coordinates.
 	 */
 	CartesianCoordinate asCartesianCoordinate();
 
 	/**
 	 * Interprets both Coordinates as Cartesian Coordinates and calculates the Distance
-	 * @param coordinate Second point to calculate the distance to
+	 * @param coord Second point to calculate the distance to
 	 * @return Distance between two Coordinates
 	 */
-	double getCartesianDistance(Coordinate coordinate);
+	double getCartesianDistance(Coordinate coord);
 
 	/**
-	 * Convert this Coordinate to a Spherical one
-	 * @return Interpret this Coordinate as a Spherical Coordinate
+	 * Convert this Coordinates to a Spherical one
+	 * @return Interpret this Coordinates as a Spherical Coordinates
 	 */
 	SphericalCoordinate asSphericalCoordinate();
 
 	/**
-	 * Interprets both Coordinates as Sperical Coordinates and calculates the Distance
+	 * Interprets both Coordinates as Spherical Coordinates and calculates the Distance
 	 * @param coordinate Second point to calculate the distance to
 	 * @return Distance between two Coordinates
 	 */

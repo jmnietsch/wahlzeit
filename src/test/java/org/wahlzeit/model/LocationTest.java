@@ -23,6 +23,8 @@ package org.wahlzeit.model;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.wahlzeit.model.Coordinates.CartesianCoordinate;
+import org.wahlzeit.model.Coordinates.Coordinate;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -38,9 +40,9 @@ public class LocationTest {
 	@Before
 	public void setup(){
 		//init some testvars
-		coordinate = new CartesianCoordinate(0.0, 2.0, 0.0);
-		l0 = new Location(new CartesianCoordinate(0, 0, 0));
-		l1 = new Location(new CartesianCoordinate(0, 0, 2));
+		coordinate = CartesianCoordinate.getCartesianCoordinate(0.0, 2.0, 0.0);
+		l0 = new Location(CartesianCoordinate.getCartesianCoordinate(0, 0, 0));
+		l1 = new Location(CartesianCoordinate.getCartesianCoordinate(0, 0, 2));
 		l2 = new Location(coordinate);
 
 	}
@@ -55,8 +57,8 @@ public class LocationTest {
 
 	@Test
 	public void testIsEqual(){
-		assertTrue(l0.isEqual(new Location(new CartesianCoordinate(0,0,0))));
-		assertTrue(l1.isEqual(new Location(new CartesianCoordinate(0, 0, 2))));
+		assertTrue(l0.isEqual(new Location(CartesianCoordinate.getCartesianCoordinate(0,0,0))));
+		assertTrue(l1.isEqual(new Location(CartesianCoordinate.getCartesianCoordinate(0, 0, 2))));
 
 		assertTrue(l2.isEqual(l2));
 		assertFalse(l1.isEqual(l2));
@@ -66,8 +68,8 @@ public class LocationTest {
 
 	@Test
 	public void testEquals(){
-		assertTrue(l0.equals(new Location(new CartesianCoordinate(0,0,0))));
-		assertTrue(l1.equals(new Location(new CartesianCoordinate(0, 0, 2))));
+		assertTrue(l0.equals(new Location(CartesianCoordinate.getCartesianCoordinate(0,0,0))));
+		assertTrue(l1.equals(new Location(CartesianCoordinate.getCartesianCoordinate(0, 0, 2))));
 
 		assertTrue(l2.equals(l2));
 		assertFalse(l1.equals(l2));
