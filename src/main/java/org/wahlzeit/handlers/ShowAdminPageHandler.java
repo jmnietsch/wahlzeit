@@ -135,7 +135,7 @@ public class ShowAdminPageHandler extends AbstractWebPageHandler implements WebF
 		User user = UserManager.getInstance().getUserById(userId);
 		if (user == null) {
 			log.config("User = null");
-			us.setMessage(user.getLanguageConfiguration().getUserNameIsUnknown());
+			//us.setMessage(user.getLanguageConfiguration().getUserNameIsUnknown());
 		}
 
 		return PartUtil.SHOW_ADMIN_PAGE_NAME;
