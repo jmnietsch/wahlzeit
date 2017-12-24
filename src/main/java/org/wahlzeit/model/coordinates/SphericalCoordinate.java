@@ -24,15 +24,22 @@ package org.wahlzeit.model.coordinates;
 import com.google.common.base.Preconditions;
 import org.wahlzeit.utils.Assertions;
 import org.wahlzeit.utils.NameHelper;
+import org.wahlzeit.utils.PatternInstance;
 
 import java.util.HashMap;
 
+@PatternInstance(
+		patternName = "Factory",
+		participants = {
+				"SphericalCoordinate"
+		}
+)
 public final class SphericalCoordinate extends AbstractCoordinate{
 	private final double latitude;
     private final double longitude;
     private final double radius;
 
-	private static HashMap<String, SphericalCoordinate> sphericalCoordinateHashMap = new HashMap<>();
+	private static final HashMap<String, SphericalCoordinate> sphericalCoordinateHashMap = new HashMap<>();
 
 	/**
 	 * The mean earth radius in meters

@@ -23,15 +23,23 @@ package org.wahlzeit.model.coordinates;
 import com.google.common.base.Preconditions;
 import org.wahlzeit.utils.Assertions;
 import org.wahlzeit.utils.NameHelper;
+import org.wahlzeit.utils.PatternInstance;
 
 import java.util.HashMap;
 
+
+@PatternInstance(
+		patternName = "Factory",
+		participants = {
+				"CartesianCoordinate"
+		}
+)
 public final class CartesianCoordinate extends AbstractCoordinate{
     private final double x;
     private final double y;
     private final double z;
 
-	private static HashMap<String, CartesianCoordinate> cartesianCoordinateHashMap = new HashMap<>();
+	private static final HashMap<String, CartesianCoordinate> cartesianCoordinateHashMap = new HashMap<>();
 
     private CartesianCoordinate(double xValue, double yValue, double zValue) {
         this.x = xValue;
