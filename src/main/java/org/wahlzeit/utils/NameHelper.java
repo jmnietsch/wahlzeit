@@ -1,6 +1,6 @@
 package org.wahlzeit.utils;
 
-import org.wahlzeit.model.Coordinates.Coordinate;
+import org.wahlzeit.model.coordinates.Coordinate;
 
 public final class NameHelper {
 	private NameHelper(){

@@ -4,7 +4,7 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 import org.wahlzeit.model.*;
-import org.wahlzeit.model.MusicalLocation.MusicalLocationPhoto;
+import org.wahlzeit.model.musicalLocation.MusicalLocationPhoto;
 import org.wahlzeit.model.persistence.DatastoreAdapter.ImageWrapper;
 
 /**

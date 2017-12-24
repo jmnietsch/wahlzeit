@@ -3,9 +3,9 @@ package org.wahlzeit.model;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.wahlzeit.model.Coordinates.CartesianCoordinateTest;
-import org.wahlzeit.model.Coordinates.CoordinateTest;
-import org.wahlzeit.model.MusicalLocation.MusicalLocationTestSuite;
+import org.wahlzeit.model.coordinates.CartesianCoordinateTest;
+import org.wahlzeit.model.coordinates.CoordinateTest;
+import org.wahlzeit.model.musicalLocation.MusicalLocationTestSuite;
 import org.wahlzeit.model.persistence.PersistenceTestSuite;
 
 @RunWith(Suite.class)

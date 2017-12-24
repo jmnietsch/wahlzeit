@@ -1,4 +1,4 @@
-package org.wahlzeit.model.MusicalLocation;
+package org.wahlzeit.model.musicalLocation;
 
 import com.google.common.base.Preconditions;
 import com.googlecode.objectify.annotation.Subclass;
@@ -58,7 +58,7 @@ public class MusicalLocationPhoto extends Photo {
 
 	private void assertClassInvariants() {
 		if(fMusicalLocation == null){
-			throw new IllegalStateException("A MusicalLocation in " + this + " must not be null");
+			throw new IllegalStateException("A musicalLocation in " + this + " must not be null");
 		}
 
 		if(id == null){

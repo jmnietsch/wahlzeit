@@ -18,7 +18,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package org.wahlzeit.model.Coordinates;
+package org.wahlzeit.model.coordinates;
 
 
 import com.google.common.base.Preconditions;
@@ -97,7 +97,7 @@ public final class SphericalCoordinate extends AbstractCoordinate{
 
 	/**
 	 *
-	 * @param coordinate The Coordinates to calculate the Distance against
+	 * @param coordinate The coordinates to calculate the Distance against
 	 * @return geodetic distance between this point and one parameter
 	 */
 	@Override

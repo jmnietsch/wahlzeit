@@ -1,4 +1,4 @@
-package org.wahlzeit.model.Coordinates;
+package org.wahlzeit.model.coordinates;
 
 import org.junit.Before;
 import org.junit.Test;

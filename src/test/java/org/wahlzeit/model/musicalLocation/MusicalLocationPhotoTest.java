@@ -1,4 +1,4 @@
-package org.wahlzeit.model.MusicalLocation;
+package org.wahlzeit.model.musicalLocation;
 
 import org.junit.Test;
 

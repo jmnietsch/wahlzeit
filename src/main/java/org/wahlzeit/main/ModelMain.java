@@ -21,8 +21,8 @@
 package org.wahlzeit.main;
 
 import org.wahlzeit.model.*;
-import org.wahlzeit.model.MusicalLocation.MusicalLocationPhotoFactory;
-import org.wahlzeit.model.MusicalLocation.MusicalLocationPhotoManager;
+import org.wahlzeit.model.musicalLocation.MusicalLocationPhotoFactory;
+import org.wahlzeit.model.musicalLocation.MusicalLocationPhotoManager;
 import org.wahlzeit.model.persistence.DatastoreAdapter;
 import org.wahlzeit.model.persistence.ImageStorage;
 import org.wahlzeit.services.LogBuilder;

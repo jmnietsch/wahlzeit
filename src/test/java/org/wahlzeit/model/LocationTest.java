@@ -23,8 +23,8 @@ package org.wahlzeit.model;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.wahlzeit.model.Coordinates.CartesianCoordinate;
-import org.wahlzeit.model.Coordinates.Coordinate;
+import org.wahlzeit.model.coordinates.CartesianCoordinate;
+import org.wahlzeit.model.coordinates.Coordinate;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

@@ -1,4 +1,4 @@
-package org.wahlzeit.model.Coordinates;
+package org.wahlzeit.model.coordinates;
 
 import com.google.common.base.Preconditions;
 
@@ -7,11 +7,11 @@ public abstract class AbstractCoordinate implements Coordinate {
 	protected final double DELTA = 1E-4;
 
 	/**
-	 * Compare to Coordinates for matters of equality.
+	 * Compare to coordinates for matters of equality.
 	 * It has been pointed out to me, that my getDistance solution is not exactly efficient, however I still like it.
 	 *
  	 * @methodtype boolean query
-	 * @param c A Coordinates to compare this to
+	 * @param c A coordinates to compare this to
 	 * @return true if both coordinates describe (nearly) the same point in space.
 	 */
 	@Override

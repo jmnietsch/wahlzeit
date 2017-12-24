@@ -18,7 +18,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package org.wahlzeit.model.Coordinates;
+package org.wahlzeit.model.coordinates;
 
 import com.google.common.base.Preconditions;
 import org.wahlzeit.utils.Assertions;
