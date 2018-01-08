@@ -1,7 +1,14 @@
 package org.wahlzeit.model.coordinates;
 
 import com.google.common.base.Preconditions;
+import org.wahlzeit.utils.PatternInstance;
 
+@PatternInstance(
+		patternName = "Template",
+		participants = {
+				"AbstractClass"
+		}
+)
 public abstract class AbstractCoordinate implements Coordinate {
 
 	protected final double DELTA = 1E-4;

@@ -29,9 +29,11 @@ import java.util.HashMap;
 
 
 @PatternInstance(
-		patternName = "Factory",
+		patternName = {
+				"Factory", "Template"
+		},
 		participants = {
-				"CartesianCoordinate"
+				"CartesianCoordinate", "ConcreteClass"
 		}
 )
 public final class CartesianCoordinate extends AbstractCoordinate{

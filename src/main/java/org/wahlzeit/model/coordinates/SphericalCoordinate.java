@@ -29,9 +29,11 @@ import org.wahlzeit.utils.PatternInstance;
 import java.util.HashMap;
 
 @PatternInstance(
-		patternName = "Factory",
+		patternName = {
+				"Factory", "Template"
+		},
 		participants = {
-				"SphericalCoordinate"
+				"SphericalCoordinate", "ConcreteClass"
 		}
 )
 public final class SphericalCoordinate extends AbstractCoordinate{
