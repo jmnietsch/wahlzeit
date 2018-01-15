@@ -4,17 +4,21 @@ import com.google.common.base.Preconditions;
 
 public class MusicalLocation {
 	private String fLocationName;
+	private MusicalLocationType fMusicalLocationType;
+	private final int id;
 
+	public MusicalLocation(MusicalLocationType mlt) {
+		Preconditions.checkNotNull(mlt);
 
-	public MusicalLocation() {
-		fLocationName = "";
+		fMusicalLocationType = mlt;
+		fLocationName = fMusicalLocationType.getName(); //Default value. May be overridden
+		id = fMusicalLocationType.getNextId();
 
 		assertClassInvariants();
 	}
 
-	public MusicalLocation(String name){
-		assertClassInvariants();
-		Preconditions.checkNotNull(name);
+	public MusicalLocation(MusicalLocationType mlt, String name){
+		this(mlt);
 
 		fLocationName = name;
 		assertClassInvariants();
@@ -33,10 +37,21 @@ public class MusicalLocation {
 		assertClassInvariants();
 	}
 
+	public MusicalLocationType getType() {
+		return fMusicalLocationType;
+	}
+
 	private void assertClassInvariants() {
 		if(fLocationName == null){
 			throw new IllegalStateException("All Musical Locations need a name that must not be null");
 		}
+
+		if(fMusicalLocationType == null){
+			throw new IllegalStateException("All Musical Location Types must not be null");
+		}
 	}
 
+	public int getId() {
+		return id;
+	}
 }

@@ -15,14 +15,14 @@ public class MusicalLocationPhoto extends Photo {
 	 * @methodtype constructor
 	 */
 	public MusicalLocationPhoto(){
-		this(new MusicalLocation());
+		this(MusicalLocationManager.createMusicalLocation());
 	}
 
 	/**
 	 * @methodtype constructor
 	 */
-	public MusicalLocationPhoto(MusicalLocation musicalLocation) {
-		fMusicalLocation = musicalLocation;
+	public MusicalLocationPhoto(MusicalLocation ml) {
+		fMusicalLocation = ml;
 		assertClassInvariants();
 	}
 
@@ -31,15 +31,15 @@ public class MusicalLocationPhoto extends Photo {
 	 * @methodtype constructor
 	 */
 	public MusicalLocationPhoto(PhotoId customId) {
-		this(customId, new MusicalLocation());
+		this(customId, MusicalLocationManager.createMusicalLocation());
 	}
 
 	/**
 	 * @methodtype constructor
 	 */
-	public MusicalLocationPhoto(PhotoId customId, MusicalLocation musicalLocation) {
+	public MusicalLocationPhoto(PhotoId customId, MusicalLocation ml) {
 		super(customId);
-		fMusicalLocation = musicalLocation;
+		fMusicalLocation = ml;
 
 		assertClassInvariants();
 	}

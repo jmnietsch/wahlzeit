@@ -26,4 +26,16 @@ public final class Assertions {
 			throw new IllegalArgumentException("Value must not be negative" + val);
 		}
 	}
+
+	public static void assertIsValidMusicalLocationTypeName(String typeName) {
+		if(typeName.length() <= 0){
+			throw new IllegalArgumentException("TypeName must not be empty");
+		}
+
+		if(typeName.startsWith(" ")){
+			throw new IllegalArgumentException("TypeName must not start with a space Character");
+		}
+
+		//Todo could add more Naming conventions like disallowing numbers and special characters
+	}
 }
