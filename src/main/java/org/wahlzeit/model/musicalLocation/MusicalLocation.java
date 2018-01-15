@@ -1,8 +1,11 @@
 package org.wahlzeit.model.musicalLocation;
 
 import com.google.common.base.Preconditions;
+import com.googlecode.objectify.annotation.Entity;
+import org.wahlzeit.services.DataObject;
 
-public class MusicalLocation {
+@Entity
+public class MusicalLocation extends DataObject{
 	private String fLocationName;
 	private MusicalLocationType fMusicalLocationType;
 	private final int id;

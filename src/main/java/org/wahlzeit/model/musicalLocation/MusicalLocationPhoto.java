@@ -1,6 +1,7 @@
 package org.wahlzeit.model.musicalLocation;
 
 import com.google.common.base.Preconditions;
+import com.googlecode.objectify.annotation.Container;
 import com.googlecode.objectify.annotation.Subclass;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
@@ -8,7 +9,7 @@ import org.wahlzeit.model.PhotoId;
 @Subclass
 public class MusicalLocationPhoto extends Photo {
 
-
+	@Container
 	private MusicalLocation fMusicalLocation;
 
 	/**

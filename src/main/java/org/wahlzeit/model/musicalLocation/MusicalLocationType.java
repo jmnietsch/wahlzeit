@@ -1,17 +1,21 @@
 package org.wahlzeit.model.musicalLocation;
 
 import com.google.common.base.Preconditions;
+import com.googlecode.objectify.annotation.Entity;
 import org.wahlzeit.services.DataObject;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+@Entity
 public class MusicalLocationType extends DataObject {
 	private MusicalLocationType superType = null;
 	private Set<MusicalLocationType> subTypes = new HashSet<>();
 	private String fTypeName;
 	private static int idCounter = 0;
+
+	//Todo type-ids as identifier? (Suggested by reviewer)
 
 	MusicalLocationType(String typeName) {
 		fTypeName = typeName;

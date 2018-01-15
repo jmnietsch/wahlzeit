@@ -1,12 +1,13 @@
 package org.wahlzeit.model.musicalLocation;
 
 import com.google.common.base.Preconditions;
+import org.wahlzeit.services.ObjectManager;
 import org.wahlzeit.utils.Assertions;
 
 import java.util.HashMap;
 
 
-public class MusicalLocationManager {
+public class MusicalLocationManager extends ObjectManager{
 	private static HashMap<String, MusicalLocationType> fTypeList = new HashMap<>();
 	private static HashMap<Integer, MusicalLocation> fMusicalLocationList = new HashMap<>();
 
