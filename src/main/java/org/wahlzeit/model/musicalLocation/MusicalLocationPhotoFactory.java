@@ -27,6 +27,17 @@ public class MusicalLocationPhotoFactory extends PhotoFactory {
 		return new MusicalLocationPhoto(id);
 	}
 
+
+	/**
+	 * @methodtype factory
+	 * @param id The Id the created Image will have
+	 * @param ml the Location this Photo represents
+	 * @return A new Image Instance
+	 */
+	public MusicalLocationPhoto createPhoto(PhotoId id, MusicalLocation ml) {
+		return new MusicalLocationPhoto(id, ml);
+	}
+
 	/**
 	 * Public singleton access method.
 	 * @methodtype get

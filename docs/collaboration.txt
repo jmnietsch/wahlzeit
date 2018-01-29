@@ -1,0 +1,104 @@
+/*
+*
+* MusicalLocationPhoto / MusicalLocation Collaboration
+* MusicalLocation / MusicalLocationType
+* MusicalLocationManager / MusicalLocation
+*
+*/
+
+//------------------------------------------------//
+//---- MusicalLocationPhoto / MusicalLocation ----//
+//------------------------------------------------//
+
+//Purpose: Provide main domain functionality
+public collaboration PhotoToPlace {
+
+    public role RepresentationOfLocation {
+        public void setLocation(ConcreteLocation cl);
+        public Location getLocation();
+    }
+
+    public role ConcreteLocation {
+        //Contains: GPS Info, Name etc
+
+        public String getName();
+        public void setName(String n); //Maybe no setter. Concrete Location could be ValueObject based.
+    }
+
+}
+
+public class MusicalLocationPhoto extends Photo binds PhotoToPlace.RepresentationOfLocation {
+    ...
+}
+
+public class MusicalLocation extends DataObject binds PhotoToPlace.ConcreteLocation {
+    ...
+}
+
+
+//------------------------------------------------//
+//----- MusicalLocation / MusicalLocationType ----//
+//------------------------------------------------//
+
+public collaboration ObjectToType {
+
+    public role ObjectType {
+        public String getName();
+
+        //Construction Method
+        public ConcreteObject getNewInstance();
+
+        //Fetch stored Instance by ID
+        public ConcreteObject getInstance(instanceId);
+
+    }
+
+    public role ConcreteObject {
+        //Contains: The Type, status of the Object
+        public ObjectType getType();
+    }
+
+}
+
+public class MusicalLocationType extends DataObject binds ObjectToType.ObjectType {
+    ...
+}
+
+public class MusicalLocation extends DataObject binds ObjectToType.ConcreteObject {
+    ...
+}
+
+
+
+//------------------------------------------------//
+//--- MusicalLocationManager / MusicalLocation ---//
+//------------------------------------------------//
+
+public collaboration Management {
+
+    public role Manager {
+
+        public ManagedObject getObject(objectID);
+
+        public void addObject(ManagedObject);
+
+        public void removeObject(ManagedObject);
+        public void removeObject(objectID);
+
+        public ManagedObject createObject();
+
+    }
+
+    public role ManagedObject {
+
+    }
+
+}
+
+public class MusicalLocationManagerextends ObjectManager binds Management.Manager {
+    ...
+}
+
+public class MusicalLocation extends DataObject binds Management.ManagedObject {
+    ...
+}

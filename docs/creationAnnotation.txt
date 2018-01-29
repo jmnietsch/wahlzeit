@@ -1,0 +1,34 @@
+////////////////////////////////
+// PhotoManager::createPhoto //
+////////////////////////////////
+
+createPhoto:342, PhotoManager (org.wahlzeit.model)
+createPhoto:43, PhotoUtil (org.wahlzeit.model)
+createPhoto:9, MusicalLocationPhotoFactory (org.wahlzeit.model.musicalLocation)
+createPhoto:27, MusicalLocationPhotoFactory (org.wahlzeit.model.musicalLocation)
+-> call to new MusicalLocationPhoto(id)
+
+•	Delegation: 	separate-object
+•	Concrete Class	by-subclassing
+•	Configuration	In-Code
+•	Instantiation	In-Code
+•	Initialization	By-fixed-signature
+•	Building	    Default
+
+
+
+///////////////////////////////////////////////////
+// MusicalLocationManager::createMusicalLocation //
+///////////////////////////////////////////////////
+
+createMusicalLocation:52, MusicalLocationManager (org.wahlzeit.model.musicalLocation)
+getMusicalLocationType:21, MusicalLocationManager (org.wahlzeit.model.musicalLocation)
+createInstance:25, MusicalLocationType (org.wahlzeit.model.musicalLocation)
+-> calls new MusicalLocation(this)
+
+•	Delegation:	    separate-object
+•	Concrete Class	On-the-spot
+•	Configuration	In-Code
+•	Instantiation	In-Code
+•	Initialization	Default
+•	Building        Default
